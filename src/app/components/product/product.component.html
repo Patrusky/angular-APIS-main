@@ -1,0 +1,18 @@
+<!-- <app-img *ngIf="product.images.length > 0" [img]="product.images[0]"></app-img>
+<h2>{{ product.price | currency:'COP' }}</h2>
+<p>{{ product.title }}</p>
+<button (click)="onShowDetail()">Detalles</button>
+<button (click)="onAddToCart()">Agregar carrito</button> -->
+
+<div class="card ">
+  <app-img *ngIf="product.images.length > 0" [img]="product.images[0]"></app-img>
+  <div class="contenido">
+    <h2>{{ product.price | currency:'COP' }}</h2>    <div class="title">
+    <p>{{ product.title }}</p>
+    </div>
+    <div class="botones">
+      <button (click)="onShowDetail()">Detalles</button>
+      <button (click)="onAddToCart()">Agregar carrito</button>
+    </div>
+  </div>
+</div>
