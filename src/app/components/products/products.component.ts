@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { switchMap } from 'rxjs/operators';
+import { zip } from 'rxjs';
 
 import { Product, CreateProductDTO, UpdateProductDTO } from '../../models/product.model';
 
@@ -29,7 +31,7 @@ export class ProductsComponent implements OnInit {
   };
   limit = 10;
   offset = 0;
-
+  statusDetail: 'loading' | 'success' | 'error' | 'init' = 'init' ;
 
   constructor(
     private storeService: StoreService,
@@ -47,11 +49,34 @@ export class ProductsComponent implements OnInit {
     this.total = this.storeService.getTotal();
   }
   onShowDetail(id: string){
+    this.statusDetail = 'loading';
     this.productsService.getProduct(id)
     .subscribe(data => {
       this.toggleProductDetail();
       this.productChosen = data;
+      this.statusDetail = 'success';
+    }, errorMsg => {
+      window.alert(errorMsg);
+      this.statusDetail = 'error';
+    }
+    );
+  }
+  readAndUpdate(id: string){
+    this.productsService.getProduct(id)
+    .pipe(
+      switchMap((product) => this.productsService.update(product.id, {title: 'change'}))
+    )
+    .subscribe(data => {
+      console.log(data);
     });
+    zip(
+      this.productsService.getProduct(id),
+      this.productsService.update(id, {title: 'nuevo'})
+      )
+      .subscribe(response => {
+        const read = response[0];
+        const update = response[0];
+      })
   }
 
   toggleProductDetail(){
