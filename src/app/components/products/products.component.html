@@ -19,8 +19,8 @@
     [slidesPerView]="1"
     [spaceBetween]="50"
     >
-    <ng-template swiperSlide *ngFor="let img of productChosen.images">
-      <img [src]="img" alt="">
+    <ng-template swiperSlide>
+      <img [src]="productChosen.image" alt="">
     </ng-template>
 
     </swiper>

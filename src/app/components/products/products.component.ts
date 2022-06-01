@@ -21,7 +21,7 @@ export class ProductsComponent implements OnInit {
   productChosen: Product = {
     id: '',
     price: 0,
-    images: [''],
+    image: '',
     title: '',
     category: {
       id: '',
@@ -87,7 +87,7 @@ export class ProductsComponent implements OnInit {
     const product: CreateProductDTO = {
       title: 'Nuevo producto',
       description: 'jajaajajaj',
-      images: ['https://placeimg.com/640/480/any?random=${Math.random()}'],
+      image: 'https://placeimg.com/640/480/any?random=${Math.random()}',
       price: 1000,
       categoryId: 2,
     }

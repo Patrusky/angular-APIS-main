@@ -5,7 +5,7 @@
 <button (click)="onAddToCart()">Agregar carrito</button> -->
 
 <div class="card ">
-  <app-img *ngIf="product.images.length > 0" [img]="product.images[0]"></app-img>
+  <app-img *ngIf="product.image" [img]="product.image"></app-img>
   <div class="contenido">
     <h2>{{ product.price | currency:'COP' }}</h2>    <div class="title">
     <p>{{ product.title }}</p>
