@@ -78,7 +78,7 @@ export class AppComponent {
 
   login(){
     this.authService.login('johnd', 'm38rmF$')
-    /* .pipe(
+    /*.pipe(
       switchMap((token) => {
         this.token = token.access_token;
         return this.authService.profile(token.access_token);
@@ -87,22 +87,21 @@ export class AppComponent {
     .subscribe(user => {
       console.log('login');
       this.profile = user;
-    });*/
-    .subscribe(rta => {
+    })*/
+     .subscribe(rta => {
+      this.token = rta.access_token;
       console.log(rta.access_token);
     })
   }
 
 
 
-  getProfile(token: string){
+  getProfile(){
     this.authService.profile(this.token)
     .subscribe(profile => {
       console.log(profile);
     });
   }
 
-  hola(){
-    console.log('hola2')
-  }
+
 }

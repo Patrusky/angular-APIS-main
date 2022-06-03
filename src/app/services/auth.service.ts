@@ -19,10 +19,10 @@ export class AuthService {
     return this.http.post<Auth>(`${this.apiUrl}/login`,{username, password});
   }
   profile(token: string){
-    /* let headers = new HttpHeaders();
+    let headers = new HttpHeaders();
     headers.set('Authorization', `Bearer ${token}`);
-    headers = headers.set('Content_type', 'application/json'); , {headers}*/
-    return this.http.get<User>(`${this.apiUrl}/profile`);
+    headers = headers.set('Content_type', 'application/json');
+    return this.http.get<User>(`${this.apiUrl}/profile`, {headers});
   }
 
 }
