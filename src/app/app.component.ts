@@ -98,7 +98,7 @@ export class AppComponent {
 
   getProfile(){
     this.authService.profile(this.token)
-    .subscribe(profile => {
+    .subscribe((profile: any) => {
       console.log(profile);
     });
   }
